@@ -1,5 +1,7 @@
 # retro-rom-player
 
+**[Live Demo](https://gididaf.github.io/retro-rom-player/)** (bring your own ROM)
+
 A complete rewrite of Pokemon Yellow in TypeScript, running in the browser on HTML5 Canvas.
 
 This is **not an emulator** — it's a ground-up reimplementation of the original Game Boy game, ported instruction-by-instruction from the [pret/pokeyellow](https://github.com/pret/pokeyellow) Z80 assembly disassembly into modern TypeScript. The goal is pixel-perfect, logic-exact fidelity to the original game, including all Gen 1 bugs and quirks.
