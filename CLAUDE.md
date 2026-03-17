@@ -60,7 +60,7 @@ Entry point: `index.html` -> `src/main.ts`
 |--------|---------|-------------|
 | `src/core/` | Shared types, constants, player state | `Direction`, `MapData`, `NpcData`, `GB_WIDTH`, `TILE_SIZE`, `BLOCK_PX`, `getPlayerName()`, `setPlayerName()`, `substituteNames()` |
 | `src/renderer/` | Canvas 2D rendering | `initRenderer()`, `drawTile()`, `drawSprite()`, `loadTileset()`, `loadSprite()` |
-| `src/input/` | Keyboard input (arrows, Z=A, X=B, Enter=Start) | `updateInput()`, `isHeld()`, `isPressed()` |
+| `src/input/` | Keyboard + touch input (arrows/WASD, Z=A, X=B, Enter=Start; mobile touch overlay with D-pad/A/B/Start/Select) | `updateInput()`, `isHeld()`, `isPressed()`, `setKey()`, `initTouchControls()` |
 | `src/text/` | Dialogue text box + game text lookup | `TextBox`, `initTextSystem()`, `charToTile()`, `loadGameText()`, `getText()`, `getFontCanvas()` |
 | `src/overworld/` | Maps, player, NPCs, story state, transitions | `GameMap`, `Player`, `Npc`, `applyStoryNpcState()`, `performWarpLoad()` |
 | `src/battle/` | Wild/trainer battle system, evolution | `Battle`, `loadBattleData()`, `createPokemon()`, `tryWildEncounter()`, `checkEvolutions()`, `applyEvolution()` |

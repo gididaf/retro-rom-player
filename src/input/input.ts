@@ -38,3 +38,8 @@ export function isHeld(button: GameButton): boolean {
 export function isPressed(button: GameButton): boolean {
   return justPressed[button];
 }
+
+/** Set a button state programmatically (used by touch controls). */
+export function setKey(button: GameButton, pressed: boolean): void {
+  keys[button] = pressed;
+}

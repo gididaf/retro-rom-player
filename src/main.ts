@@ -9,7 +9,7 @@ import {
   getScale,
 } from "./renderer";
 import { initAudio, resumeAudio, playMusic, stopMusic, tickAudio, playSFX, suspendAudio, resumeAudioOutput } from "./audio";
-import { updateInput, isPressed } from "./input";
+import { updateInput, isPressed, initTouchControls } from "./input";
 import { GameMap, Player, Npc, loadNpcs } from "./overworld";
 import {
   applyDefeatedTrainers, applyStoryNpcState, recordDefeated,
@@ -313,6 +313,7 @@ async function init(): Promise<void> {
 
   initRenderer();
   initAudio();
+  initTouchControls();
 
   // Load core assets and title screen in parallel
   await Promise.all([
