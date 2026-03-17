@@ -189,14 +189,13 @@ Three-layer architecture: **data extraction** (ASM → JSON), **synthesizer** (W
 | `src/audio/sfx_engine.ts` | SFX engine — plays sound effects on channels 5-8 that override music channels 1-4. Uses `square_note` (direct frequency) and `pitch_sweep` (NR10 hardware sweep) |
 | `src/audio/synthesizer.ts` | ScriptProcessorNode: sample-by-sample generation of all 4 channels. Pulse uses phase accumulator + duty table, wave uses phase accumulator + 32-sample waveform lookup, noise uses LFSR with hardware envelope running at 64Hz inside the audio callback |
 | `src/audio/frequency_table.ts` | Note → Hz lookup matching `Audio1_CalculateFrequency` (SRA shift, octave 1=highest) |
-| `scripts/gen_music.js` | Parses `audio/music/*.asm` → `data/audio/music/*.json` |
-| `scripts/gen_sfx.js` | Parses `audio/sfx/*.asm` → `data/audio/sfx/*.json` (37 SFX extracted) |
+| `src/rom/extractors/audio.ts` | ROM extractor: parses binary music/SFX commands from ROM |
 
 **Music data format** (`data/audio/music/*.json`): Each track has `channels[]`, each channel has `commands[]`. Commands: `tempo`, `volume`, `note_type`, `octave`, `note`, `rest`, `duty_cycle`, `vibrato`, `pitch_slide`, `drum_speed`, `drum_note`, `sound_call`/`sound_loop`/`sound_ret`.
 
 **SFX data format** (`data/audio/sfx/*.json`): Each SFX has `channels[]` (id 5-8), each channel has `commands[]`. Commands: `square_note` (direct 11-bit frequency), `noise_note`, `pitch_sweep`, `duty_cycle`, `sound_loop`, `sound_ret`.
 
-**Music tracks extracted**: 50+ tracks extracted from ROM at runtime. The 15 original JSON files (`scripts/gen_music.js`) remain as ground truth for verification tests. The ROM extractor (`src/rom/extractors/audio.ts`) parses binary music commands directly and extracts all tracks listed in the `MUSIC_HEADERS` table.
+**Music tracks extracted**: 50+ tracks extracted from ROM at runtime. The ROM extractor (`src/rom/extractors/audio.ts`) parses binary music commands directly and extracts all tracks listed in the `MUSIC_HEADERS` table.
 
 **Map music system:** `MAP_MUSIC` lookup table in `main.ts` maps each map name to its music track (from `data/maps/songs.asm`). `updateMapMusic()` starts the track only if different from current (avoids restarting same music on indoor transitions within a town).
 

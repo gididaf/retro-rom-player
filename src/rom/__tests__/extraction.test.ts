@@ -309,9 +309,9 @@ describe('Sprite decompression', () => {
     // Convert to pixels
     const pixels = tiles2bppToPixels(result.tiles2bpp, 5, 5);
 
-    // Load reference PNG (may not exist if gfx/ symlink is removed)
+    // Reference PNG for pixel comparison (only available if pokeyellow disassembly is cloned alongside)
     const pngPath = resolve(__dirname, '../../../../gfx/pokemon/front/pikachu.png');
-    if (!existsSync(pngPath)) return; // Skip pixel comparison if no reference PNG
+    if (!existsSync(pngPath)) return; // Skip if no reference PNG available
     const pngBuffer = readFileSync(pngPath);
     const png = PNG.sync.read(pngBuffer);
 
