@@ -105,3 +105,24 @@ All extracted data is served to the game engine via a `fetch()` override — the
 This repository contains **no copyrighted Nintendo content**. It is a clean-room style engine implementation that requires users to provide their own legally obtained ROM file. No ROM files, game assets, sprites, music, or dialogue text are included or distributed.
 
 The project references the [pret/pokeyellow](https://github.com/pret/pokeyellow) disassembly (a community reverse-engineering project) as a technical reference for reimplementation.
+
+## Contributing
+
+This project is actively looking for contributors! The demo covers Pallet Town through Viridian City — there's an entire game left to build.
+
+**Ways to contribute:**
+
+- **Add new maps** — Pewter City, Mt. Moon, Cerulean City and beyond. Each map needs header parsing, tileset rendering, NPCs, warps, and story scripts
+- **Implement missing features** — PC box system, TM/HM teaching, fishing, overworld poison, bike, Surf/Fly
+- **Battle mechanics** — trainer rosters for new areas, missing move effects, Pokemon cries
+- **QA & bug reports** — play the demo and [open an issue](https://github.com/gididaf/retro-rom-player/issues) if something doesn't match the original game
+- **ROM extraction** — extend the extractors to cover more data from the ROM
+
+**Getting started:**
+
+1. Clone this repo + the [pret/pokeyellow](https://github.com/pret/pokeyellow) disassembly side by side
+2. Run `npm install && npm run setup <your-rom.gbc>`
+3. Read `CLAUDE.md` for architecture details and conventions
+4. Pick an [issue](https://github.com/gididaf/retro-rom-player/issues) or open one to discuss what you'd like to work on
+
+The golden rule: **always read the assembly source before implementing anything.** This is a pixel-perfect port — every detail must match the original game.
